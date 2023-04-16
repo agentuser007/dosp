@@ -1,0 +1,42 @@
+
+
+
+{% block content %}
+  <h1>Edit Book</h1>
+  <form method="post">
+    {% csrf_token %}
+  <p>
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" value="{{ form.title.value }}">
+  </p>
+  <p>
+    <label for="author">Author:</label>
+    <input type="text" name="author" id="author" value="{{ form.author.value }}">
+  </p>
+  <p>
+    <label for="publisher">Publisher:</label>
+    <input type="text" name="publisher" id="publisher" value="{{ form.publisher.value }}">
+  </p>
+  <p>
+    <label for="publication_date">Publication Date:</label>
+    <input type="date" name="publication_date" id="publication_date" value="{{ form.publication_date.value }}">
+  </p>
+  <p>
+    <label for="pages">Pages:</label>
+    <input type="number" name="pages" id="pages" value="{{ form.pages.value }}">
+  </p>
+    <input type="submit" value="Save">
+  </form>
+
+  {% if form.errors %}
+    <h3>Errors:</h3>
+    <ul>
+      {% for field in form %}
+        {% for error in field.errors %}
+          <li>{{ field.label }}: {{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
