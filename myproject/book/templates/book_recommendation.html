@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Recommendation</title>
+</head>
+<body>
+  <h1>Book Recommendation</h1>
+  <ul>
+    {% for book in books %}
+      <li>{{ book.title }} by {{ book.author }}</li>
+        <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+        <p><strong>Publication Date:</strong> {{ book.publication_date }}</p>
+        <p><strong>Pages:</strong> {{ book.pages }}</p>
+
+    {% empty %}
+      <li>No books found.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
